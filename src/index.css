@@ -1,0 +1,393 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-primary: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+
+  --color-brand-navy: #0B132B;
+  --color-brand-surface: #0F1A34;
+  --color-brand-teal: #008779;
+  --color-brand-teal-dark: #006B60;
+  --color-brand-accent: #0A84FF;
+  --color-brand-slate: #1E293B;
+  --color-brand-muted: #64748B;
+  --color-brand-border: #E2E8F0;
+}
+
+/* Theme Custom Properties */
+:root, [data-theme="sapphire"] {
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-accent: #0A84FF;
+  --hero-gradient: linear-gradient(180deg, #2A56DE 0%, #4972EE 20%, #798FEF 40%, #AE9DE5 60%, #E1A4D0 75%, #F8B0B4 88%, #FBD3B8 100%);
+  --hero-overlay-from: rgba(26, 62, 168, 0.75);
+  --hero-overlay-mid: rgba(37, 82, 206, 0.40);
+  --hero-overlay-to: rgba(255, 255, 255, 0.45);
+  --theme-ring: rgba(37, 99, 235, 0.45);
+}
+
+[data-theme="emerald"] {
+  --color-primary: #059669;
+  --color-primary-hover: #047857;
+  --color-accent: #10B981;
+  --hero-gradient: linear-gradient(180deg, #064E3B 0%, #047857 20%, #059669 40%, #10B981 60%, #34D399 75%, #6EE7B7 88%, #A7F3D0 100%);
+  --hero-overlay-from: rgba(6, 78, 59, 0.82);
+  --hero-overlay-mid: rgba(4, 120, 87, 0.45);
+  --hero-overlay-to: rgba(255, 255, 255, 0.45);
+  --theme-ring: rgba(16, 185, 129, 0.45);
+}
+
+[data-theme="sunset"] {
+  --color-primary: #E11D48;
+  --color-primary-hover: #BE123C;
+  --color-accent: #F97316;
+  --hero-gradient: linear-gradient(180deg, #881337 0%, #9F1239 20%, #BE123C 40%, #E11D48 60%, #FB7185 75%, #F43F5E 88%, #FDBA74 100%);
+  --hero-overlay-from: rgba(136, 19, 55, 0.85);
+  --hero-overlay-mid: rgba(190, 18, 60, 0.45);
+  --hero-overlay-to: rgba(255, 255, 255, 0.45);
+  --theme-ring: rgba(225, 29, 72, 0.45);
+}
+
+[data-theme="violet"] {
+  --color-primary: #7C3AED;
+  --color-primary-hover: #6D28D9;
+  --color-accent: #8B5CF6;
+  --hero-gradient: linear-gradient(180deg, #1E1B4B 0%, #312E81 20%, #4338CA 40%, #6366F1 60%, #8B5CF6 75%, #C084FC 88%, #DDD6FE 100%);
+  --hero-overlay-from: rgba(30, 27, 75, 0.88);
+  --hero-overlay-mid: rgba(67, 56, 202, 0.48);
+  --hero-overlay-to: rgba(255, 255, 255, 0.45);
+  --theme-ring: rgba(139, 92, 246, 0.45);
+}
+
+/* Clean typographic reset, tight letter tracking */
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+}
+
+/* Portal Twilight Dawn Gradient & Atmosphere */
+.portal-hero-bg {
+  background: var(--hero-gradient);
+  transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Delicate night-sky twinkle stars */
+.portal-stars {
+  background-image: 
+    radial-gradient(1.5px 1.5px at 12% 15%, rgba(255,255,255,0.9) 50%, transparent),
+    radial-gradient(1.5px 1.5px at 28% 8%, rgba(255,255,255,0.8) 50%, transparent),
+    radial-gradient(2px 2px at 45% 18%, rgba(255,255,255,0.95) 50%, transparent),
+    radial-gradient(1px 1px at 62% 10%, rgba(255,255,255,0.7) 50%, transparent),
+    radial-gradient(2px 2px at 78% 14%, rgba(255,255,255,0.95) 50%, transparent),
+    radial-gradient(1.5px 1.5px at 91% 22%, rgba(255,255,255,0.85) 50%, transparent),
+    radial-gradient(1px 1px at 8% 28%, rgba(255,255,255,0.6) 50%, transparent),
+    radial-gradient(1.5px 1.5px at 35% 26%, rgba(255,255,255,0.75) 50%, transparent),
+    radial-gradient(2px 2px at 85% 6%, rgba(255,255,255,0.9) 50%, transparent),
+    radial-gradient(1px 1px at 94% 16%, rgba(255,255,255,0.6) 50%, transparent);
+}
+
+/* Perspective mock window with balanced, subtle elevation shadow */
+.portal-window {
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.9),
+    0 20px 40px -15px rgba(15, 23, 42, 0.12),
+    0 0 25px -5px rgba(73, 114, 238, 0.15);
+}
+
+/* Shimmer sweep animation for live verification line */
+@keyframes sweepGlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+.animate-sweep-glow {
+  animation: sweepGlow 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Pulse glow for shield */
+@keyframes shieldGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(251, 191, 36, 0.25); }
+  50% { box-shadow: 0 0 24px rgba(251, 191, 36, 0.55); }
+}
+.animate-shield-glow {
+  animation: shieldGlow 3s ease-in-out infinite;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.025em;
+}
+
+/* Subdued border utilities */
+.hairline-b { border-bottom: 1px solid #E5E9EE; }
+.hairline { border: 1px solid #E5E9EE; }
+
+/* Custom native form selects with clean SVG arrows */
+select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2364748b'%3e%3cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25em 1.25em;
+  padding-right: 2.25rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Typewriter animation styles */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  vertical-align: -0.15em;
+  background-color: #ffffff;
+  animation: blink 0.85s infinite;
+  margin-left: 4px;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Liquid water flowing ambient caustics */
+@keyframes liquidFlow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(32px, -24px) scale(1.08) rotate(3deg);
+  }
+  66% {
+    transform: translate(-24px, 20px) scale(0.95) rotate(-2deg);
+  }
+}
+.animate-liquid-flow {
+  animation: liquidFlow 16s ease-in-out infinite;
+}
+.animate-liquid-flow-reverse {
+  animation: liquidFlow 20s ease-in-out infinite reverse;
+}
+
+/* Google Antigravity-style liquid expanding card */
+.benefits-antigravity-card {
+  will-change: transform, border-radius, width, height, min-height;
+  transform-origin: center top;
+  transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none !important;
+}
+
+/* Product Cards in-view stagger reveal */
+.product-card-reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  will-change: opacity, transform;
+}
+.product-card-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Horizontal Right-to-Left Overlapping Product Panels */
+.product-panel-h {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity;
+  transform-origin: center center;
+}
+
+.panel-anim-fade {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.panel-anim-scale {
+  opacity: 0;
+  transform: scale(0.94) translateX(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.is-inview .panel-anim-fade {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.is-inview .panel-anim-scale {
+  opacity: 1;
+  transform: scale(1) translateX(0);
+}
+
+/* Subtle breathing card float */
+@keyframes floatMockupCard {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-mockup {
+  animation: floatMockupCard 6s ease-in-out infinite;
+}
+
+/* Product Overview Deck Animation & Clean Border-Color-Only Hover */
+.overview-deck-card {
+  transition: border-color 0.25s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+#overview-card-0:hover { border-color: #00C975 !important; }
+#overview-card-1:hover { border-color: #FF5B4F !important; }
+#overview-card-2:hover { border-color: #10B981 !important; }
+#overview-card-3:hover { border-color: #00B4F1 !important; }
+
+/* Sticky Curtain Reveal Footer */
+.site-main-curtain {
+  position: relative;
+  z-index: 20;
+  background-color: #ffffff;
+  min-height: 100vh;
+  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.5);
+}
+.site-footer-sticky {
+  position: sticky;
+  bottom: 0;
+  z-index: 0;
+}
+@media (max-height: 500px) {
+  .site-footer-sticky {
+    position: static;
+  }
+}
+
+/* Platform Metrics In-View Stagger Animation */
+.metric-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--metric-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+#platform-metrics.is-inview .metric-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Workflow Section */
+.workflow-step {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.workflow-step.is-active {
+  opacity: 1;
+}
+.workflow-step.is-completed {
+  opacity: 0.78;
+}
+.workflow-step:not(.is-active):not(.is-completed) {
+  opacity: 0.42;
+}
+.workflow-step:not(.is-active):hover {
+  opacity: 0.92;
+}
+.workflow-indicator-line {
+  transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: background-color, box-shadow;
+}
+.workflow-step-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0;
+  overflow: hidden;
+}
+.workflow-step.is-active .workflow-step-content {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.workflow-step-inner {
+  min-height: 0;
+}
+.workflow-card-img {
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  will-change: opacity, transform;
+}
+.workflow-card-img.is-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+  z-index: 10;
+  filter: blur(0px);
+}
+.workflow-card-img:not(.is-active) {
+  opacity: 0;
+  transform: scale(0.97) translateY(8px);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(2px);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Custom sleek scrollbars for FAQ section */
+.faq-dark-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+.faq-dark-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.faq-dark-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.faq-dark-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 9999px;
+}
+.faq-dark-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.faq-light-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(15, 23, 42, 0.15) transparent;
+}
+.faq-light-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.faq-light-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.faq-light-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.15);
+  border-radius: 9999px;
+}
+.faq-light-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.28);
+}
+
+

@@ -1,0 +1,125 @@
+/* "How it works" orbit animations (V2), all on one shared 8s loop with no delays, so every
+   element stays in sync with the ring. The ring draws at constant speed over 0–75% of the
+   loop; each numbered node stays an outline until the line reaches it, turns green at that
+   moment, holds, and every node resets to outline together as the ring fades (88–96%).
+   Step text is always fully visible; each step heading (.ob-title-N) turns green with its node.
+   Arrival points: node 1 at 9.375%, 2 at 28.125%, 3 at 46.875%, 4 at 65.625%. */
+
+@keyframes ob-ring {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  75% { stroke-dashoffset: 0; opacity: 1; }
+  90% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* Desktop nodes are centred on a point on the ring, so they keep the translate. */
+@keyframes ob-node-1 {
+  0%, 9.375% { transform: translate(-50%, -50%) scale(0.75); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+  12.375% { transform: translate(-50%, -50%) scale(1.2); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 16px rgba(0, 176, 116, 0.16); }
+  15.375%, 88% { transform: translate(-50%, -50%) scale(1); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 8px rgba(0, 176, 116, 0.12); }
+  96%, 100% { transform: translate(-50%, -50%) scale(0.75); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+}
+
+@keyframes ob-node-2 {
+  0%, 28.125% { transform: translate(-50%, -50%) scale(0.75); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+  31.125% { transform: translate(-50%, -50%) scale(1.2); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 16px rgba(0, 176, 116, 0.16); }
+  34.125%, 88% { transform: translate(-50%, -50%) scale(1); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 8px rgba(0, 176, 116, 0.12); }
+  96%, 100% { transform: translate(-50%, -50%) scale(0.75); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+}
+
+@keyframes ob-node-3 {
+  0%, 46.875% { transform: translate(-50%, -50%) scale(0.75); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+  49.875% { transform: translate(-50%, -50%) scale(1.2); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 16px rgba(0, 176, 116, 0.16); }
+  52.875%, 88% { transform: translate(-50%, -50%) scale(1); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 8px rgba(0, 176, 116, 0.12); }
+  96%, 100% { transform: translate(-50%, -50%) scale(0.75); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+}
+
+@keyframes ob-node-4 {
+  0%, 65.625% { transform: translate(-50%, -50%) scale(0.75); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+  68.625% { transform: translate(-50%, -50%) scale(1.2); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 16px rgba(0, 176, 116, 0.16); }
+  71.625%, 88% { transform: translate(-50%, -50%) scale(1); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 8px rgba(0, 176, 116, 0.12); }
+  96%, 100% { transform: translate(-50%, -50%) scale(0.75); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+}
+
+/* Mobile list nodes aren't centred on a point, so they scale without the translate. */
+@keyframes ob-node-inline-1 {
+  0%, 9.375% { transform: scale(0.85); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+  12.375% { transform: scale(1.12); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 12px rgba(0, 176, 116, 0.16); }
+  15.375%, 88% { transform: scale(1); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 6px rgba(0, 176, 116, 0.12); }
+  96%, 100% { transform: scale(0.85); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+}
+
+@keyframes ob-node-inline-2 {
+  0%, 28.125% { transform: scale(0.85); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+  31.125% { transform: scale(1.12); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 12px rgba(0, 176, 116, 0.16); }
+  34.125%, 88% { transform: scale(1); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 6px rgba(0, 176, 116, 0.12); }
+  96%, 100% { transform: scale(0.85); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+}
+
+@keyframes ob-node-inline-3 {
+  0%, 46.875% { transform: scale(0.85); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+  49.875% { transform: scale(1.12); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 12px rgba(0, 176, 116, 0.16); }
+  52.875%, 88% { transform: scale(1); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 6px rgba(0, 176, 116, 0.12); }
+  96%, 100% { transform: scale(0.85); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+}
+
+@keyframes ob-node-inline-4 {
+  0%, 65.625% { transform: scale(0.85); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+  68.625% { transform: scale(1.12); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 12px rgba(0, 176, 116, 0.16); }
+  71.625%, 88% { transform: scale(1); background: #00B074; color: #ffffff; border-color: #00B074; box-shadow: 0 0 0 6px rgba(0, 176, 116, 0.12); }
+  96%, 100% { transform: scale(0.85); background: #ffffff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(0, 176, 116, 0); }
+}
+
+@keyframes ob-text-1 {
+  0%, 9.375% { color: #0f172a; }
+  12.375%, 88% { color: #00B074; }
+  96%, 100% { color: #0f172a; }
+}
+
+@keyframes ob-text-2 {
+  0%, 28.125% { color: #0f172a; }
+  31.125%, 88% { color: #00B074; }
+  96%, 100% { color: #0f172a; }
+}
+
+@keyframes ob-text-3 {
+  0%, 46.875% { color: #0f172a; }
+  49.875%, 88% { color: #00B074; }
+  96%, 100% { color: #0f172a; }
+}
+
+@keyframes ob-text-4 {
+  0%, 65.625% { color: #0f172a; }
+  68.625%, 88% { color: #00B074; }
+  96%, 100% { color: #0f172a; }
+}
+
+@keyframes ob-zoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes ob-spin {
+  to { transform: rotate(360deg); }
+}
+
+.ob-ring { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ob-ring 8s linear infinite; }
+.ob-node-1 { animation: ob-node-1 8s linear infinite both; }
+.ob-node-inline-1 { animation: ob-node-inline-1 8s linear infinite both; }
+.ob-title-1 { animation: ob-text-1 8s linear infinite both; }
+.ob-node-2 { animation: ob-node-2 8s linear infinite both; }
+.ob-node-inline-2 { animation: ob-node-inline-2 8s linear infinite both; }
+.ob-title-2 { animation: ob-text-2 8s linear infinite both; }
+.ob-node-3 { animation: ob-node-3 8s linear infinite both; }
+.ob-node-inline-3 { animation: ob-node-inline-3 8s linear infinite both; }
+.ob-title-3 { animation: ob-text-3 8s linear infinite both; }
+.ob-node-4 { animation: ob-node-4 8s linear infinite both; }
+.ob-node-inline-4 { animation: ob-node-inline-4 8s linear infinite both; }
+.ob-title-4 { animation: ob-text-4 8s linear infinite both; }
+.ob-zoom { animation: ob-zoom 14s ease-in-out infinite; }
+.ob-spin { animation: ob-spin 50s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  [class*='ob-'] { animation: none !important; }
+  .ob-ring { stroke-dashoffset: 0; }
+}
