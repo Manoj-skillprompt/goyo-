@@ -11,7 +11,7 @@ import {
 } from '@phosphor-icons/react';
 import type { Icon as PhosphorIcon } from '@phosphor-icons/react';
 import { BrandMark } from './BrandMark';
-import { V2_PRODUCTS } from '../v2Data';
+import { PARTNER_APPLY_HREF, V2_PRODUCTS } from '../v2Data';
 
 const QUICK_LINKS = [
   { label: 'Products', href: '#products' },
@@ -36,7 +36,6 @@ const SOCIAL: { Icon: PhosphorIcon; label: string; href: string }[] = [
   { Icon: InstagramLogo, label: 'Instagram', href: 'https://www.instagram.com' }
 ];
 
-const PARTNER_EMAIL ='mailto:support@youroshc.com.au?subject=Become%20a%20partner';
 
 const ColumnTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <h3 className="text-[13px] font-semibold uppercase tracking-[0.12em] text-white">{children}</h3>
@@ -67,7 +66,7 @@ export const V2Footer: React.FC = () => (
           <div className="mt-7 flex flex-wrap gap-3">
             {/* Small primary button (SKILLS.md → Button) */}
             <a
-              href={PARTNER_EMAIL}
+              href={PARTNER_APPLY_HREF}
               className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-[#009662] bg-linear-to-b from-[#22C98D] to-[#00A86E] px-4 text-[14px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_1px_2px_rgba(15,23,42,0.12),0_4px_10px_-4px_rgba(0,150,98,0.45)] transition-[filter,transform] hover:brightness-[1.04] active:translate-y-px active:brightness-95"
             >
               <Handshake weight="duotone" className="h-5 w-5" />

@@ -20,6 +20,8 @@ import { HowItWorks } from './components/HowItWorks';
 import { ImpactPanel } from './components/ImpactPanel';
 import { WhyChooseGoyo } from './components/WhyChooseGoyo';
 import { V2Footer } from './components/V2Footer';
+import { PartnerSection } from './components/PartnerSection';
+import { StudentsBanner } from './components/StudentsBanner';
 import { FAQSection } from './components/FAQSection';
 import { Testimonials } from './components/Testimonials';
 import { SECTION_HEADING } from './styles';
@@ -57,6 +59,9 @@ export const Version2: React.FC<VersionProps> = ({ onOpenLogin }) => {
         <PartnersMetrics />
       </div>
       {/* <ProviderSection /> */}
+
+      {/* Full-width students photo banner: a visual break between the offer and "how it works" */}
+      <StudentsBanner />
 
       {/* How it works: four-step purchase flow with live screenshots */}
       <HowItWorks />
@@ -414,6 +419,9 @@ export const Version2: React.FC<VersionProps> = ({ onOpenLogin }) => {
       )}
 
       {/* 8. Footer: brand + partner actions, products, quick links, contact */}
+      {/* Become our partner: photo background (video-ready), just before the footer */}
+      <PartnerSection />
+
       <V2Footer />
 
       {/* Agent Modal */}

@@ -165,6 +165,10 @@ export const V2_VISAS: { subclass: string; name: string; cover: 'OSHC' | 'OVHC' 
   { subclass: '600', name: 'Visitor', cover: 'OVHC' }
 ];
 
+// "Become our partner" / "Apply now" link, shared by the partner section and the footer.
+// Opens an email until there's a partner application page to link to instead.
+export const PARTNER_APPLY_HREF = 'mailto:support@youroshc.com.au?subject=Become%20a%20partner';
+
 // Testimonials for the marquee wall. Sample reviews: replace with real ones before launch.
 export const V2_TESTIMONIALS: { name: string; initials: string; university: string; country: string; quote: string }[] = [
   {
