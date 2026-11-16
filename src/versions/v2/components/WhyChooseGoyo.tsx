@@ -16,7 +16,7 @@ import {
 } from '@phosphor-icons/react';
 import type { Icon as PhosphorIcon } from '@phosphor-icons/react';
 import { BrandMark } from './BrandMark';
-import { EYEBROW, EYEBROW_ON_LIGHT, SECTION_HEADING, SUBHEADING } from '../styles';
+import { BUTTON_PRIMARY, EYEBROW, EYEBROW_ON_LIGHT, SECTION_HEADING, SUBHEADING } from '../styles';
 import { V2_PROVIDERS } from '../v2Data';
 
 // "Why choose Goyo": on desktop the reasons scroll on the left while a sticky stack of cards on
@@ -209,34 +209,38 @@ interface PhotoTag {
   punch: string;
 }
 
-const PHOTO_CARDS: { src: string; alt: string; tags: [PhotoTag, PhotoTag] }[] = [
+const PHOTO_CARDS: { src: string; alt: string; position: string; tags: [PhotoTag, PhotoTag] }[] = [
   {
-    src: local('visa'), // photo-1494790108377-be9c29b29330
-    alt: 'Young woman laughing',
+    src: local('visa'), // photo-1517841905240-472988babdf9
+    alt: 'Smiling young woman in a denim jacket and hoodie against a blue wall',
+    position: '50% 30%',
     tags: [
       { Icon: SealCheck, lead: 'Visa requirements?', punch: 'Consider them done!' },
       { Icon: AirplaneTilt, lead: 'Australia-bound with', punch: 'Zero paperwork stress!' }
     ]
   },
   {
-    src: local('compare'), // photo-1522202176988-66273c2fd55f
-    alt: 'Students smiling while comparing options on their laptops',
+    src: local('compare'), // photo-1543269865-cbf427effbad
+    alt: 'Students laughing together while comparing options on a tablet',
+    position: '45% 40%',
     tags: [
       { Icon: Scales, lead: '5 approved insurers', punch: 'Side by side' },
       { Icon: Tag, lead: 'The official price,', punch: 'Zero markup!' }
     ]
   },
   {
-    src: local('family'), // photo-1609220136736-443140cffec6
-    alt: 'Smiling father carrying his two young children',
+    src: local('family'), // photo-1539635278303-d4002c07eae3
+    alt: 'A group of young travellers with backpacks laughing together in the mountains',
+    position: '45% 40%',
     tags: [
       { Icon: UsersThree, lead: 'Studying, working or visiting?', punch: 'We’ve got you' },
       { Icon: House, lead: 'The whole family,', punch: 'One policy!' }
     ]
   },
   {
-    src: local('doctor'), // photo-1559839734-2b71ea197ec2
-    alt: 'Smiling doctor in a white coat',
+    src: local('doctor'), // photo-1622253692010-333f2da6031d
+    alt: 'Smiling healthcare worker in scrubs with a stethoscope',
+    position: '50% 30%',
     tags: [
       { Icon: Stethoscope, lead: 'Doctor visits', punch: 'Covered!' },
       { Icon: FirstAid, lead: 'Hospital & ambulance', punch: 'Included!' }
@@ -270,7 +274,13 @@ const PhotoCard: React.FC<{ index: number; overhang?: boolean; tagOpacity?: numb
     <div className="absolute inset-0">
       <div className="absolute inset-0 overflow-hidden rounded-[36px] bg-slate-200">
         {/* Loaded eagerly: cards slide in mid-scroll, so lazy loading would flash an empty card. */}
-        <img src={card.src} alt={card.alt} decoding="async" className="h-full w-full object-cover" />
+        <img
+          src={card.src}
+          alt={card.alt}
+          decoding="async"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: card.position }}
+        />
       </div>
       <TagPill
         tag={card.tags[0]}
@@ -304,13 +314,32 @@ const ReasonText: React.FC<{ r: (typeof REASONS)[number]; active: boolean; deskt
     </span>
     <h3 className={`${SUBHEADING} text-slate-900`}>{r.title}</h3>
     <p className="max-w-[480px] text-[17px] leading-[1.6] text-slate-600 sm:text-[18px]">{r.text}</p>
-    <a
-      href={r.link.href}
-      className={`${GREEN_BUTTON} group h-12 w-fit gap-2 rounded-xl px-6 text-[15px] transition-[filter,transform] hover:brightness-[1.05] active:translate-y-px active:brightness-95`}
-    >
+    <a href={r.link.href} className={`${BUTTON_PRIMARY} w-fit`}>
       {r.link.label}
-      <ArrowRight weight="bold" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
     </a>
+  </div>
+);
+
+// Subtle background that sets this section apart from the white "How it works" above:
+// a soft mint wash, a faint emerald dot grid fading out towards the middle, and a large,
+// very faint brand swoosh behind the cards. Decorative only.
+const SectionBackdrop: React.FC = () => (
+  <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+    <div className="absolute inset-0 bg-linear-to-b from-[#ECF8F2] via-[#F5FBF8] to-[#EEF7F3]" />
+    <div
+      className="absolute inset-0 opacity-[0.55]"
+      style={{
+        backgroundImage: 'radial-gradient(rgba(0,150,98,0.22) 1px, transparent 1.2px)',
+        backgroundSize: '22px 22px',
+        maskImage: 'radial-gradient(120% 90% at 0% 0%, #000 0%, transparent 55%), radial-gradient(90% 80% at 100% 100%, #000 0%, transparent 50%)',
+        WebkitMaskImage:
+          'radial-gradient(120% 90% at 0% 0%, #000 0%, transparent 55%), radial-gradient(90% 80% at 100% 100%, #000 0%, transparent 50%)'
+      }}
+    />
+    <BrandMark
+      fill="#00B074"
+      className="absolute -right-24 top-1/2 h-auto w-[620px] -translate-y-1/2 opacity-[0.06]"
+    />
   </div>
 );
 
@@ -378,12 +407,13 @@ export const WhyChooseGoyo: React.FC = () => {
   };
 
   return (
-    <section id="why-goyo" className="scroll-mt-24 bg-white">
+    <section id="why-goyo" className="scroll-mt-24 border-t border-slate-200 bg-[#F3FAF6]">
       {/* Desktop: the tall wrapper provides the scroll distance; its sticky child stays pinned
           to the viewport while the reasons move through their window and the cards stack. */}
       <div ref={ref} className="relative hidden lg:block" style={{ height: `calc(100vh + ${PIN}px)` }}>
         <div className="sticky top-0 h-screen overflow-hidden">
-          <div className="mx-auto grid h-full max-w-7xl grid-cols-[minmax(0,1fr)_480px] gap-x-16 px-8 pb-10 pt-24 xl:grid-cols-[minmax(0,1fr)_560px] xl:gap-x-24">
+          <SectionBackdrop />
+          <div className="relative mx-auto grid h-full max-w-7xl grid-cols-[minmax(0,1fr)_480px] gap-x-16 px-8 pb-10 pt-24 xl:grid-cols-[minmax(0,1fr)_560px] xl:gap-x-24">
             <div className="flex min-h-0 flex-col">
               <SectionHeader />
               {/* Reason window: shows one reason at a time, soft-faded at top and bottom */}
@@ -425,7 +455,9 @@ export const WhyChooseGoyo: React.FC = () => {
       </div>
 
       {/* Phones and tablets: each reason followed by its card, no scroll effect */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:hidden">
+      <div className="relative overflow-hidden lg:hidden">
+        <SectionBackdrop />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeader className="pb-12 pt-20" />
         <div className="space-y-16 pb-20">
           {REASONS.map((r, i) => (
@@ -437,6 +469,7 @@ export const WhyChooseGoyo: React.FC = () => {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

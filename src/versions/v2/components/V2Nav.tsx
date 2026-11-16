@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CaretDown, List, X } from '@phosphor-icons/react';
 import { BrandMark } from './BrandMark';
+import { BUTTON_COMPACT, BUTTON_PRIMARY, BUTTON_SECONDARY } from '../styles';
 import { V2_PRODUCTS, V2_VISAS } from '../v2Data';
 import { partnersData } from '../../../data/portalData';
 
@@ -202,7 +203,7 @@ const MobileMenu: React.FC<{ onClose: () => void; onOpenLogin: () => void }> = (
             onClose();
             onOpenLogin();
           }}
-          className="w-full cursor-pointer rounded-xl border border-slate-200 py-3 text-[15px] font-semibold text-slate-900 transition-colors hover:border-[#00B074] hover:text-[#009662]"
+          className={`${BUTTON_SECONDARY} w-full`}
         >
           Agent login
         </button>
@@ -327,11 +328,8 @@ export const V2Nav: React.FC<V2NavProps> = ({ onOpenLogin }) => {
           >
             Agent login
           </button>
-          <a
-            href="#products"
-            // Small primary button (see SKILLS.md → Button)
-            className="inline-flex h-10 items-center justify-center rounded-lg border border-[#009662] bg-linear-to-b from-[#22C98D] to-[#00A86E] px-4 text-[14px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_1px_2px_rgba(15,23,42,0.12),0_4px_10px_-4px_rgba(0,150,98,0.45)] transition-[filter,transform] hover:brightness-[1.04] active:translate-y-px active:brightness-95"
-          >
+          {/* Same primary button, compact height to fit the floating nav */}
+          <a href="#products" className={`${BUTTON_PRIMARY} ${BUTTON_COMPACT}`}>
             Get a quote
           </a>
           {/* Menu button: phones and tablets only */}

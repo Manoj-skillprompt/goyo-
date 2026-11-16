@@ -18,9 +18,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenLogin }) => {
             <span className="font-bold text-white text-xl tracking-tight">
               goyo
             </span>
-            <span className="ml-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/20 text-white/90 border border-white/25 backdrop-blur-sm">
-              V1 Original
-            </span>
           </a>
 
           {/* Right Action Links */}

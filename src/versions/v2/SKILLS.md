@@ -61,6 +61,22 @@ Tactile buttons: a soft vertical gradient, a 1px border, a 1px inner highlight a
 edge and a small drop shadow. Rounded rectangle (`rounded-xl`), not a pill. Reference:
 the hero CTAs in [components/V2Hero.tsx](components/V2Hero.tsx).
 
+**Use the shared constants, don't copy the classes.** Both styles live in [styles.ts](styles.ts)
+as `BUTTON_PRIMARY` and `BUTTON_SECONDARY`, so every button on the page stays identical:
+
+```tsx
+import { BUTTON_PRIMARY, BUTTON_SECONDARY } from '../styles';
+
+<a href="#products" className={BUTTON_PRIMARY}>Find my cover</a>
+<a href="#providers" className={BUTTON_SECONDARY}>Compare providers</a>
+```
+
+Append layout-only classes if needed (`w-fit`, `w-full`, `shrink-0`). The only size variant is
+`BUTTON_COMPACT`, used for "Get a quote" in the floating nav. The product card buttons keep their
+own brand-coloured style (see Brand variant).
+
+The class lists below are what those constants contain.
+
 ### Primary
 
 For the single most important action in a section (for example "Find my cover").

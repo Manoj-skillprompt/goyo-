@@ -24,8 +24,8 @@ export const VERSIONS: VersionConfig[] = [
     id: 'v3',
     label: 'V3',
     title: 'Version 3',
-    subtitle: 'Editorial Studio Canvas',
-    badge: 'Canvas',
+    subtitle: 'Conversion-focused hero on the V2 page',
+    badge: 'Convert',
     component: Version3
   }
 ];

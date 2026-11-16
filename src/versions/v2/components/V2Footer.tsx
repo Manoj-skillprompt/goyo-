@@ -63,16 +63,14 @@ export const V2Footer: React.FC = () => (
             Health cover, university admissions and travel insurance for your journey to Australia and New Zealand.
           </p>
 
-          <div className="mt-7 flex flex-wrap gap-3">
-            {/* Small primary button (SKILLS.md → Button) */}
-            <a
-              href={PARTNER_APPLY_HREF}
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-[#009662] bg-linear-to-b from-[#22C98D] to-[#00A86E] px-4 text-[14px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_1px_2px_rgba(15,23,42,0.12),0_4px_10px_-4px_rgba(0,150,98,0.45)] transition-[filter,transform] hover:brightness-[1.04] active:translate-y-px active:brightness-95"
-            >
-              <Handshake weight="duotone" className="h-5 w-5" />
-              Become our partner
-            </a>
-          </div>
+          {/* Text link, not a button: the partner section right above already has the "Apply now" button */}
+          <a
+            href={PARTNER_APPLY_HREF}
+            className="group mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-[#00B074] transition-colors hover:text-[#22C98D]"
+          >
+            Partner with us
+            <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
 
           {/* Social links */}
           <ul className="mt-7 flex items-center gap-2.5" aria-label="Follow us">

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { HandCoins, Scales, SealCheck, Star } from '@phosphor-icons/react';
 import { ProductCard } from './ProductCard';
-import { DISPLAY, SECTION_HEADING } from '../styles';
+import { BUTTON_PRIMARY, BUTTON_SECONDARY, DISPLAY, SECTION_HEADING } from '../styles';
 import { V2_AVATARS, V2_PRODUCTS, V2_RATING, V2_REVIEWS, V2_TRUST_STATS, V2Product } from '../v2Data';
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -199,13 +199,13 @@ export const V2Hero: React.FC<V2HeroProps> = ({ onSelectProduct }) => (
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
               href="#products"
-              className="inline-flex h-14 min-w-[200px] items-center justify-center rounded-xl border border-[#009662] bg-linear-to-b from-[#22C98D] to-[#00A86E] px-8 text-[16px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.28),0_1px_2px_rgba(15,23,42,0.12),0_4px_10px_-4px_rgba(0,150,98,0.45)] transition-[filter,transform] hover:brightness-[1.04] active:translate-y-px active:brightness-95"
+              className={BUTTON_PRIMARY}
             >
               Find my cover
             </a>
             <a
               href="#providers"
-              className="inline-flex h-14 min-w-[200px] items-center justify-center rounded-xl border border-zinc-300 bg-linear-to-b from-white to-zinc-100 px-8 text-[16px] font-semibold text-slate-900 shadow-[inset_0_1px_0_#ffffff,0_1px_2px_rgba(15,23,42,0.08)] transition-[filter,transform] hover:brightness-[0.99] active:translate-y-px active:to-zinc-200"
+              className={BUTTON_SECONDARY}
             >
               Compare providers
             </a>
@@ -303,7 +303,7 @@ export const V2Hero: React.FC<V2HeroProps> = ({ onSelectProduct }) => (
       </div>
 
       {/* Products */}
-      <div id="products" className="scroll-mt-28pt-16 lg:pt-20">
+      <div id="products" className="scroll-mt-28 pt-16 lg:pt-20">
         <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <h2 className={`${SECTION_HEADING} text-slate-900`}>
             Four products. <span className="text-slate-500">One account.</span>

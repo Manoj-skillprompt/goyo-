@@ -8,6 +8,7 @@ import { ProductShowcase } from '../../components/ProductShowcase';
 import { WorkflowProcess } from '../../components/WorkflowProcess';
 import { FAQSection } from '../../components/FAQSection';
 import { Footer } from '../../components/Footer';
+import { PartnerSection } from '../../components/PartnerSection';
 import { AgentModal } from '../../components/AgentModal';
 import { VersionProps } from '../types';
 
@@ -61,6 +62,9 @@ export const Version1: React.FC<VersionProps> = ({ onOpenLogin }) => {
 
         {/* 7. Frequently Asked Questions */}
         <FAQSection />
+
+        {/* Become our partner (moved from V2) */}
+        <PartnerSection />
       </main>
 
       {/* 8. Sticky Curtain Reveal Footer */}
