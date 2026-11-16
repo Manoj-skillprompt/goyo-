@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Navbar } from '../../components/Navbar';
+import { V2Nav } from '../v2/components/V2Nav';
 import { Hero } from '../../components/Hero';
 import { PartnersMetrics } from '../../components/PartnersMetrics';
 import { BenefitsCard } from '../../components/BenefitsCard';
-import { ProductOverview } from '../../components/ProductOverview';
 import { ProductShowcase } from '../../components/ProductShowcase';
 import { WorkflowProcess } from '../../components/WorkflowProcess';
 import { FAQSection } from '../../components/FAQSection';
@@ -23,36 +22,23 @@ export const Version1: React.FC<VersionProps> = ({ onOpenLogin }) => {
     }
   };
 
-  const handleSelectProduct = (index: number) => {
-    const productsSection = document.getElementById('products');
-    if (productsSection) {
-      const vh = window.innerHeight || 800;
-      const targetTop = window.scrollY + productsSection.getBoundingClientRect().top + index * vh;
-      window.scrollTo({
-        top: targetTop,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
-    <div className="bg-black text-slate-900 font-sans selection:bg-slate-900 selection:text-white min-h-screen">
-      {/* Floating Navigation */}
-      <Navbar onOpenLogin={handleOpenLogin} />
+    <div className="bg-black text-slate-900 font-secondary selection:bg-slate-900 selection:text-white min-h-screen">
+      {/* Same floating nav as V2 (V1 has no reviews section, so that link is left out) */}
+      <V2Nav onOpenLogin={handleOpenLogin} hideReviews />
 
       {/* Main Curtain Content Container */}
       <main className="site-main-curtain">
         {/* 1. Hero Section */}
         <Hero />
 
-        {/* 2. Partners & Platform Scale Metrics */}
-        <PartnersMetrics />
+        {/* 2. Partners & Platform Scale Metrics (#providers is where the nav's Providers links land) */}
+        <div id="providers" className="scroll-mt-24">
+          <PartnersMetrics />
+        </div>
 
         {/* 3. Liquid Benefits Expanding Card */}
         <BenefitsCard onOpenLogin={handleOpenLogin} />
-
-        {/* 4. Product Overview Deck (3D Spread) */}
-        <ProductOverview onSelectProduct={handleSelectProduct} />
 
         {/* 5. Horizontal Overlapping Product Showcase Panels */}
         <ProductShowcase />

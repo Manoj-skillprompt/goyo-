@@ -8,6 +8,8 @@ import { partnersData } from '../../../data/portalData';
 
 interface V2NavProps {
   onOpenLogin: () => void;
+  /** Leave out "Reviews", for a page with no #reviews section (V1). Off by default. */
+  hideReviews?: boolean;
 }
 
 type MenuId = 'products' | 'providers' | 'visa';
@@ -126,7 +128,9 @@ const MOBILE_GROUPS: Record<MenuId, { label: string; sub?: string; href: string 
   visa: V2_VISAS.map((v) => ({ label: `${v.subclass} · ${v.name}`, sub: v.cover, href: '#providers' }))
 };
 
-const MobileMenu: React.FC<{ onClose: () => void; onOpenLogin: () => void }> = ({ onClose, onOpenLogin }) => {
+type NavLink = (typeof LINKS)[number];
+
+const MobileMenu: React.FC<{ onClose: () => void; onOpenLogin: () => void; links: NavLink[] }> = ({ onClose, onOpenLogin, links }) => {
   const [group, setGroup] = useState<MenuId | null>(null);
 
   return (
@@ -139,7 +143,7 @@ const MobileMenu: React.FC<{ onClose: () => void; onOpenLogin: () => void }> = (
       className="pointer-events-auto mx-auto mt-2 max-h-[calc(100vh-96px)] max-w-6xl overflow-y-auto rounded-3xl border border-slate-200 bg-white p-2 shadow-[0_24px_48px_-16px_rgba(15,23,42,0.25)] md:hidden"
     >
       <ul>
-        {LINKS.map((link) => {
+        {links.map((link) => {
           const menu = link.menu;
           if (!menu) {
             return (
@@ -212,7 +216,8 @@ const MobileMenu: React.FC<{ onClose: () => void; onOpenLogin: () => void }> = (
   );
 };
 
-export const V2Nav: React.FC<V2NavProps> = ({ onOpenLogin }) => {
+export const V2Nav: React.FC<V2NavProps> = ({ onOpenLogin, hideReviews = false }) => {
+  const links = hideReviews ? LINKS.filter((l) => l.href !== '#reviews') : LINKS;
   const [open, setOpen] = useState<MenuId | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -239,7 +244,7 @@ export const V2Nav: React.FC<V2NavProps> = ({ onOpenLogin }) => {
         </a>
 
         <nav className="hidden h-full items-center gap-1 text-[14px] font-medium text-slate-600 md:flex">
-          {LINKS.map((link) => {
+          {links.map((link) => {
             if (!link.menu) {
               return (
                 <a
@@ -347,7 +352,7 @@ export const V2Nav: React.FC<V2NavProps> = ({ onOpenLogin }) => {
       </div>
 
       <AnimatePresence>
-        {mobileOpen && <MobileMenu onClose={() => setMobileOpen(false)} onOpenLogin={onOpenLogin} />}
+        {mobileOpen && <MobileMenu onClose={() => setMobileOpen(false)} onOpenLogin={onOpenLogin} links={links} />}
       </AnimatePresence>
     </header>
   );

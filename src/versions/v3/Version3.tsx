@@ -3,20 +3,20 @@ import { MotionConfig } from 'framer-motion';
 import { AgentModal } from '../../components/AgentModal';
 import { VersionProps } from '../types';
 import { V2Nav } from '../v2/components/V2Nav';
-import { PartnersMetrics } from '../v2/components/PartnersMetrics';
-import { StudentsBanner } from '../v2/components/StudentsBanner';
-import { HowItWorks } from '../v2/components/HowItWorks';
-import { WhyChooseGoyo } from '../v2/components/WhyChooseGoyo';
-import { ImpactPanel } from '../v2/components/ImpactPanel';
-import { Testimonials } from '../v2/components/Testimonials';
-import { FAQSection } from '../v2/components/FAQSection';
-import { PartnerSection } from '../v2/components/PartnerSection';
 import { V2Footer } from '../v2/components/V2Footer';
 import { V2Product } from '../v2/v2Data';
 import { V3Hero } from './components/V3Hero';
+import { V3Insurers } from './components/V3Insurers';
+import { V3HowItWorks } from './components/V3HowItWorks';
+import { V3Why } from './components/V3Why';
+import { V3Impact } from './components/V3Impact';
+import { V3Testimonials } from './components/V3Testimonials';
+import { V3StudentsBanner } from './components/V3StudentsBanner';
+import { V3Faq } from './components/V3Faq';
+import { V3Partner } from './components/V3Partner';
 
-// V3: V2's page with a conversion-focused hero. Every section below the hero reuses V2's
-// components, so improvements made there carry over here.
+// V3: V2's sections, in V2's order, each redesigned as a V3 component.
+// Only the nav and footer are shared with V2.
 export const Version3: React.FC<VersionProps> = ({ onOpenLogin }) => {
   const [internalLoginOpen, setInternalLoginOpen] = useState(false);
 
@@ -37,16 +37,14 @@ export const Version3: React.FC<VersionProps> = ({ onOpenLogin }) => {
         <V2Nav onOpenLogin={handleOpenLogin} />
         <V3Hero onSelectProduct={handleSelectProduct} />
 
-        <div id="providers" className="scroll-mt-24 text-slate-900">
-          <PartnersMetrics />
-        </div>
-        <StudentsBanner />
-        <HowItWorks />
-        <WhyChooseGoyo />
-        <ImpactPanel />
-        <Testimonials />
-        <FAQSection />
-        <PartnerSection />
+        <V3Insurers />
+        <V3StudentsBanner />
+        <V3HowItWorks />
+        <V3Why />
+        <V3Impact />
+        <V3Testimonials />
+        <V3Faq />
+        <V3Partner />
         <V2Footer />
 
         <AgentModal isOpen={internalLoginOpen} onClose={() => setInternalLoginOpen(false)} />

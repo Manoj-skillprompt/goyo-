@@ -75,8 +75,8 @@ export const PartnerSection: React.FC = () => (
           <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-[#00B074]">For partners</p>
           <h2 className="mt-2 text-[30px] font-bold leading-[1.1] tracking-[-0.03em] text-white sm:text-[36px] lg:text-[40px]">Become our partner</h2>
           <p className="mt-5 text-[16px] leading-relaxed text-slate-200 sm:text-[18px]">
-            We’ve reimagined the traditional, transactional world of OSHC with huge benefits for students and
-            our partners. Discover how becoming a Your OSHC partner can accelerate your business.
+            Help your students get visa-ready cover from every approved insurer, with free university
+            counselling and certificates issued the moment they pay.
           </p>
           <a
             href={PARTNER_APPLY_HREF}

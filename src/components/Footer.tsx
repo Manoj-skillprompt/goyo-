@@ -1,5 +1,5 @@
 import React from 'react';
-import { SparklesIcon } from '@heroicons/react/24/solid';
+import { DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline';
 
 interface FooterProps {
   onOpenLogin: () => void;
@@ -7,22 +7,20 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenLogin }) => {
   return (
-    <footer className="site-footer-sticky bg-black text-neutral-400 py-16 text-xs border-t border-neutral-900">
+    <footer className="site-footer-sticky bg-black text-neutral-400 py-16 text-sm border-t border-neutral-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-neutral-900">
           {/* Branding & Socials */}
           <div className="lg:col-span-5 space-y-4">
             {/* Brand Logo & Name */}
-            <a href="#" className="inline-flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 text-white shadow-sm group-hover:scale-105 group-hover:border-white/40 transition-all">
-                <SparklesIcon className="w-4 h-4 fill-white" />
-              </div>
-              <span className="font-bold text-white text-lg tracking-tight">goyo</span>
+            <a href="#" className="inline-flex items-center gap-2" aria-label="goyo home">
+              <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-[#22B25C]" />
+              <span className="font-bold text-white text-xl tracking-tight">goyo</span>
             </a>
 
-            <p className="text-neutral-400 leading-relaxed max-w-sm text-xs">
-              Australia&rsquo;s unified ecosystem integrating student health cover, visitor medical insurance, and university admissions.
+            <p className="text-neutral-400 leading-relaxed max-w-sm text-sm">
+              Health cover, university admissions and travel insurance for your journey to Australia and New Zealand.
             </p>
 
             {/* Ecosystem Sub-Brand Logos (Dark Mode) */}
@@ -49,33 +47,28 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLogin }) => {
 
           {/* Products Column */}
           <div className="lg:col-span-2">
-            <h4 className="font-semibold text-white uppercase tracking-wider text-[11px] mb-4">
+            <h4 className="font-semibold text-white uppercase tracking-wider text-[12px] mb-4">
               Products
             </h4>
             <ul className="space-y-2.5">
               <li>
                 <a href="#products" className="hover:text-white transition-colors">
-                  YourOSHC (Student 500)
+                  yourOSHC
                 </a>
               </li>
               <li>
                 <a href="#products" className="hover:text-white transition-colors">
-                  YourOVHC (Visitor 600)
+                  yourOVHC
                 </a>
               </li>
               <li>
                 <a href="#products" className="hover:text-white transition-colors">
-                  YourOVHC (Graduate 485)
+                  yourADMISSION
                 </a>
               </li>
               <li>
                 <a href="#products" className="hover:text-white transition-colors">
-                  YourADMISSION
-                </a>
-              </li>
-              <li>
-                <a href="#products" className="hover:text-white transition-colors">
-                  OrbitProtect (NZ)
+                  OrbitProtect
                 </a>
               </li>
             </ul>
@@ -83,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLogin }) => {
 
           {/* Quick Links Column */}
           <div className="lg:col-span-2">
-            <h4 className="font-semibold text-white uppercase tracking-wider text-[11px] mb-4">
+            <h4 className="font-semibold text-white uppercase tracking-wider text-[12px] mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2.5">
@@ -92,17 +85,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLogin }) => {
                   onClick={onOpenLogin}
                   className="hover:text-white transition-colors text-left cursor-pointer"
                 >
-                  Agent Portal Login
+                  Agent login
                 </button>
               </li>
               <li>
                 <a href="#products" className="hover:text-white transition-colors">
-                  Explore Products
+                  Products
                 </a>
               </li>
               <li>
                 <a href="#faq" className="hover:text-white transition-colors">
-                  FAQ &amp; Documentation
+                  FAQ
                 </a>
               </li>
               <li>
@@ -120,17 +113,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLogin }) => {
 
           {/* Contact Us Column */}
           <div className="lg:col-span-3">
-            <h4 className="font-semibold text-white uppercase tracking-wider text-[11px] mb-4">
+            <h4 className="font-semibold text-white uppercase tracking-wider text-[12px] mb-4">
               Contact Us
             </h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2.5">
-                <span
-                  className="w-5 h-5 rounded bg-neutral-900 border border-neutral-800 text-[10px] font-mono font-medium text-neutral-400 flex items-center justify-center shrink-0 mt-0.5"
-                  title="Address"
-                >
-                  a
-                </span>
+              <li className="flex items-start gap-3">
+                <MapPinIcon aria-label="Address" className="h-5 w-5 shrink-0 text-neutral-500" />
                 <span className="text-neutral-300 leading-relaxed">
                   Suite 109, Level 1, 83 York Street, Sydney NSW 2000
                 </span>
@@ -138,42 +126,27 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLogin }) => {
               <li>
                 <a
                   href="tel:+61478818283"
-                  className="flex items-center gap-2.5 text-neutral-300 hover:text-white transition-colors group"
+                  className="flex items-center gap-3 text-neutral-300 hover:text-white transition-colors group"
                 >
-                  <span
-                    className="w-5 h-5 rounded bg-neutral-900 border border-neutral-800 text-[10px] font-mono font-medium text-neutral-400 group-hover:text-white group-hover:border-neutral-700 flex items-center justify-center shrink-0 transition-colors"
-                    title="Mobile"
-                  >
-                    m
-                  </span>
-                  <span className="font-mono text-[13px] tracking-tight">+61 478 81 82 83</span>
+                  <DevicePhoneMobileIcon aria-label="Mobile" className="h-5 w-5 shrink-0 text-neutral-500" />
+                  <span>+61 478 81 82 83</span>
                 </a>
               </li>
               <li>
                 <a
                   href="tel:+61275005800"
-                  className="flex items-center gap-2.5 text-neutral-300 hover:text-white transition-colors group"
+                  className="flex items-center gap-3 text-neutral-300 hover:text-white transition-colors group"
                 >
-                  <span
-                    className="w-5 h-5 rounded bg-neutral-900 border border-neutral-800 text-[10px] font-mono font-medium text-neutral-400 group-hover:text-white group-hover:border-neutral-700 flex items-center justify-center shrink-0 transition-colors"
-                    title="Telephone"
-                  >
-                    t
-                  </span>
-                  <span className="font-mono text-[13px] tracking-tight">+61 2 7500 5800</span>
+                  <PhoneIcon aria-label="Phone" className="h-5 w-5 shrink-0 text-neutral-500" />
+                  <span>+61 2 7500 5800</span>
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:support@youroshc.com.au"
-                  className="flex items-center gap-2.5 text-neutral-300 hover:text-white transition-colors group"
+                  className="flex items-center gap-3 text-neutral-300 hover:text-white transition-colors group"
                 >
-                  <span
-                    className="w-5 h-5 rounded bg-neutral-900 border border-neutral-800 text-[10px] font-mono font-medium text-neutral-400 group-hover:text-white group-hover:border-neutral-700 flex items-center justify-center shrink-0 transition-colors"
-                    title="Email"
-                  >
-                    e
-                  </span>
+                  <EnvelopeIcon aria-label="Email" className="h-5 w-5 shrink-0 text-neutral-500" />
                   <span className="underline underline-offset-4 decoration-neutral-700 hover:decoration-white transition-colors">
                     support@youroshc.com.au
                   </span>

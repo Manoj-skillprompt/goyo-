@@ -1,0 +1,60 @@
+/* V3 "How it works" journey path. Design reference: "How 1 — Animated journey path" (HowPath.dc.html).
+   One 8s loop: the green line draws along the curve, a dot rides it, and each step lights up as it passes.
+   The loop only runs once the section scrolls into view (.hp-run). */
+
+@keyframes hp-draw {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  75% { stroke-dashoffset: 0; opacity: 1; }
+  90% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes hp-travel {
+  0% { offset-distance: 0%; opacity: 1; }
+  75% { offset-distance: 100%; opacity: 1; }
+  90% { offset-distance: 100%; opacity: 0; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+@keyframes hp-node {
+  0% { transform: translate(-50%, -50%) scale(0.7); background: #fff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(34, 178, 92, 0); }
+  5% { transform: translate(-50%, -50%) scale(1.18); background: #22b25c; color: #fff; border-color: #22b25c; box-shadow: 0 0 0 14px rgba(34, 178, 92, 0.18); }
+  10% { transform: translate(-50%, -50%) scale(1); background: #22b25c; color: #fff; border-color: #22b25c; box-shadow: 0 0 0 8px rgba(34, 178, 92, 0.12); }
+  82% { transform: translate(-50%, -50%) scale(1); background: #22b25c; color: #fff; border-color: #22b25c; box-shadow: 0 0 0 8px rgba(34, 178, 92, 0.12); }
+  95%, 100% { transform: translate(-50%, -50%) scale(0.7); background: #fff; color: #64748b; border-color: #cbd5e1; box-shadow: 0 0 0 0 rgba(34, 178, 92, 0); }
+}
+
+@keyframes hp-text {
+  0% { opacity: 0.25; transform: translateY(14px); }
+  6% { opacity: 1; transform: translateY(0); }
+  84% { opacity: 1; transform: translateY(0); }
+  97%, 100% { opacity: 0.25; transform: translateY(14px); }
+}
+
+/* Resting state before the section is seen */
+.hp-line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.hp-dot {
+  opacity: 0;
+  offset-path: path("M0 170 C50 170 100 155 150 130 S250 90 300 90 S400 105 450 130 S550 170 600 170 S700 155 750 130 S850 90 900 90 S1000 105 1050 130 S1150 170 1200 170");
+  offset-rotate: 0deg;
+}
+.hp-node { transform: translate(-50%, -50%) scale(0.7); }
+.hp-text { opacity: 0.25; transform: translateY(14px); }
+
+.hp-run .hp-line { animation: hp-draw 8s cubic-bezier(0.45, 0, 0.25, 1) infinite; }
+.hp-run .hp-dot { animation: hp-travel 8s cubic-bezier(0.45, 0, 0.25, 1) infinite; }
+.hp-run .hp-node { animation: hp-node 8s ease-out infinite; }
+.hp-run .hp-text { animation: hp-text 8s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-line, .hp-run .hp-line { animation: none; stroke-dashoffset: 0; }
+  .hp-dot, .hp-run .hp-dot { animation: none; opacity: 0; }
+  .hp-node, .hp-run .hp-node {
+    animation: none;
+    transform: translate(-50%, -50%);
+    background: #22b25c;
+    color: #fff;
+    border-color: #22b25c;
+  }
+  .hp-text, .hp-run .hp-text { animation: none; opacity: 1; transform: none; }
+}

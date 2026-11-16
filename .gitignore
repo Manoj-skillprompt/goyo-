@@ -24,3 +24,8 @@ tsconfig.tsbuildinfo
 *.sln
 *.sw?
 
+
+# Agent skills (local tooling, installed with `npx skills add`)
+.agents/
+.claude/skills/
+skills-lock.json
