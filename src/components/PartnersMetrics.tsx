@@ -65,7 +65,7 @@ export const PartnersMetrics: React.FC = () => {
               >
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-none">
                   <span>{counts[idx].toLocaleString()}</span>
-                  <span className={item.colorClass}>{item.suffix}</span>
+                  <span className="text-[#22B25C]">{item.suffix}</span>
                 </div>
                 <div className="text-xs sm:text-sm font-semibold text-slate-700 mt-2.5">
                   {item.label}
@@ -82,7 +82,7 @@ export const PartnersMetrics: React.FC = () => {
             className="mt-8 sm:mt-10 pt-6 border-t border-slate-200/80 flex flex-col md:flex-row items-center justify-between gap-4"
           >
             <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-800 shrink-0">
-              <span className="w-7 h-7 rounded-full bg-teal-100/90 text-teal-700 flex items-center justify-center shadow-xs">
+              <span className="w-7 h-7 rounded-full bg-[#E8F6EE] text-[#15803D] flex items-center justify-center">
                 <GlobeAsiaAustraliaIcon className="w-4 h-4" />
               </span>
               <span>Available to applicants from 45+ origin countries</span>
@@ -114,10 +114,10 @@ export const PartnersMetrics: React.FC = () => {
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-12"
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-950 tracking-tight">
-            Meet Our Cover Providers
+            Cover from Australia&rsquo;s approved insurers
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 mt-2">
-            We partner directly with Australia's leading registered health cover providers to deliver 100% Department of Home Affairs visa-compliant policies.
+          <p className="text-base text-slate-600 mt-2">
+            All five are official signatories to the Australian Government&rsquo;s OSHC deed.
           </p>
         </motion.div>
 
@@ -130,8 +130,7 @@ export const PartnersMetrics: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className={`bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 min-h-[150px] sm:min-h-[170px] flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md hover:border-slate-300 transition-all group ${
+              className={`bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 min-h-[150px] sm:min-h-[170px] flex flex-col items-center justify-center text-center shadow-sm ${
                 idx === 4 ? 'col-span-2 sm:col-span-1' : ''
               }`}
             >
@@ -139,10 +138,10 @@ export const PartnersMetrics: React.FC = () => {
                 <img
                   src={partner.logo}
                   alt={partner.name}
-                  className={`${partner.height} w-auto object-contain transition-transform duration-300 group-hover:scale-105`}
+                  className={`${partner.height} w-auto object-contain`}
                 />
               </div>
-              <span className="text-[11px] text-slate-500 mt-0.5">{partner.type}</span>
+              <span className="text-[13px] font-medium text-slate-500 mt-0.5">{partner.type}</span>
             </motion.div>
           ))}
         </div>

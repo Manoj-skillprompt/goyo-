@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SparklesIcon, CheckCircleIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
+import { CheckCircleIcon, ArrowRightIcon } from '@heroicons/react/20/solid';
 import { workflowStepsData } from '../data/portalData';
 
 export const WorkflowProcess: React.FC = () => {
@@ -85,13 +85,10 @@ export const WorkflowProcess: React.FC = () => {
           {/* Header */}
           <div className="max-w-3xl mb-6 sm:mb-8">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight">
-              Streamlined from Quote to{' '}
-              <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-sky-600 bg-clip-text text-transparent">
-                Visa Lodgement
-              </span>
+              From quote to visa lodgement
             </h2>
-            <p className="text-xs sm:text-sm lg:text-base text-slate-600 mt-2 leading-relaxed max-w-2xl">
-              Scroll down to explore each step of the journey &mdash; instant, transparent, and completed in under 90 seconds.
+            <p className="text-base text-slate-600 mt-2 leading-relaxed max-w-2xl">
+              Four steps, about 90 seconds from your first question to your certificate.
             </p>
           </div>
 
@@ -132,9 +129,7 @@ export const WorkflowProcess: React.FC = () => {
                               : 'bg-slate-100 border border-slate-200/60 text-slate-500'
                           }`}
                         >
-                          <span>{s.step}</span>
-                          <span className="text-slate-400 font-normal">&bull;</span>
-                          <span>{s.badge}</span>
+                          Step {s.step}
                         </div>
                       </div>
 
@@ -162,32 +157,26 @@ export const WorkflowProcess: React.FC = () => {
                             className="overflow-hidden"
                           >
                             <div className="pt-2.5">
-                              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                              <p className="text-sm text-slate-600 leading-relaxed">
                                 {s.description}
                               </p>
 
                               {/* Contextual Callout */}
                               <div className="mt-3 bg-slate-50 border border-slate-200/90 rounded-2xl p-3 sm:p-3.5 shadow-xs">
                                 <div className="flex items-start gap-2.5">
-                                  <SparklesIcon className={`w-4 h-4 shrink-0 mt-0.5 ${s.badgeColor}`} />
-                                  <span className="text-xs text-slate-700 font-medium leading-relaxed">
+                                  <CheckCircleIcon className="w-4 h-4 shrink-0 mt-0.5 text-[#22B25C]" />
+                                  <span className="text-[13px] text-slate-700 font-medium leading-relaxed">
                                     {s.calloutText}
                                   </span>
                                 </div>
                                 <div className="mt-2.5 bg-white border border-slate-200/80 rounded-xl px-3 py-2 flex items-center justify-between text-xs shadow-xs">
                                   <div className="flex items-center gap-2">
-                                    <span className={`w-2 h-2 rounded-full ${idx < 2 ? 'bg-sky-500' : 'bg-emerald-500'}`} />
-                                    <span className="text-slate-800 font-mono text-[11px] font-semibold">
+                                    <span className="w-2 h-2 rounded-full bg-[#22B25C]" />
+                                    <span className="text-slate-800 text-[12px] font-semibold">
                                       {s.subText}
                                     </span>
                                   </div>
-                                  <span
-                                    className={`text-[10px] font-bold px-2 py-0.5 rounded border ${
-                                      idx < 2
-                                        ? 'text-sky-700 bg-sky-50 border-sky-200'
-                                        : 'text-emerald-700 bg-emerald-50 border-emerald-200'
-                                    }`}
-                                  >
+                                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-md text-[#15803D] bg-[#E8F6EE]">
                                     {s.subBadge}
                                   </span>
                                 </div>
@@ -210,9 +199,9 @@ export const WorkflowProcess: React.FC = () => {
                     key={workflowStepsData[activeStep].image}
                     src={workflowStepsData[activeStep].image}
                     alt={workflowStepsData[activeStep].title}
-                    initial={{ opacity: 0, scale: 0.98, filter: 'blur(4px)' }}
-                    animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, scale: 1.01, filter: 'blur(2px)' }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute inset-0 w-full h-full object-cover object-top"
                     loading="lazy"
@@ -227,18 +216,18 @@ export const WorkflowProcess: React.FC = () => {
             <div className="flex flex-wrap items-center gap-5 text-xs sm:text-sm text-slate-600">
               <span className="flex items-center gap-1.5">
                 <CheckCircleIcon className="w-4 h-4 text-emerald-600" />
-                Instant ImmiAccount PDF
+                Certificate ready for ImmiAccount
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircleIcon className="w-4 h-4 text-emerald-600" />
-                Government Price Parity Guaranteed
+                Official deed prices, no markup
               </span>
             </div>
             <a
               href="#products"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-950 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-md transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-950 hover:bg-slate-800 text-white font-bold text-sm transition-colors"
             >
-              <span>Explore Products</span>
+              <span>See the products</span>
               <ArrowRightIcon className="w-3.5 h-3.5" />
             </a>
           </div>
